@@ -1,4 +1,6 @@
+import personagem.*;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Metodos {
     // menu
@@ -33,7 +35,7 @@ public class Metodos {
                     break;
                     case 2:
                     clearConsole(); // Limpa o console
-                    // jogar(); // Inicia o Jogo
+                    jogar(input); // Inicia o Jogo
                     break;
                 case 3:
                     clearConsole(); // Limpa o console
@@ -56,6 +58,80 @@ public class Metodos {
         input.close();
     }
 
+    public static void jogar(Scanner input){
+        clearConsole(); // Limpa o console
+        System.out.printf("Carregando...\n");
+        delay(1000); // Adiciona atraso 
+        clearConsole(); // Limpa o console
+
+        // Criação do personagem
+        Aventureiro personagem = criarPersonagem(input);
+
+        // Verifica os atributos do personagem
+        verificarPersonagem(personagem);
+        System.out.printf("\nPressione Enter para iniciar a campanha...");
+        input.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+
+        // Inicia a campanha
+        Atos.pag1(personagem, input); // Exibe a página 1
+    }
+
+    // Criação do personagem
+    public static Aventureiro criarPersonagem(Scanner input){
+        System.out.printf("Antes de iniciarmos esta campanha você precisará definir alguns atributos ao seu personagem\n\n");
+        delay(1500); // Adiciona atraso
+        System.out.printf("Vamos definir a habilidade do seu personagem.\nJogue um dado D6 e veja o resultado.\n\n");
+        System.out.printf("Pressione Enter para jogar o dado...");
+        input.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+        delay(1500); // Adiciona atraso
+        int habilidade = rolarDadoD6() + 6;
+        System.out.printf("\nCerto seu personagem tem %d de pontos de habilidade.\n\n", habilidade);
+        delay(1500); // Adiciona atraso
+        System.out.printf("Agora vamos definir quanto de energia o seu personagem tem.\nJogue dois dados D6 e veja o resultado.\n\n");
+        System.out.printf("Pressione Enter para jogar os dados...");
+        input.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+        delay(1500); // Adiciona atraso
+        int energia = rolarDadoD6() + rolarDadoD6() + 12;
+        System.out.printf("\nCerto seu personagem tem %d de pontos de energia.\n\n", energia);
+        delay(1500); // Adiciona atraso
+        System.out.printf("Por fim vamos definir a sorte do seu personagem.\nJogue um dado D6 e veja o resultado.\n\n");
+        System.out.printf("Pressione Enter para jogar o dado...");
+        input.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+        delay(1500); // Adiciona atraso
+        int sorte = rolarDadoD6() + 6;
+        System.out.printf("\nCerto seu personagem tem %d de pontos de sorte.\n\n", sorte);
+        System.out.printf("Pressione Enter para iniciar a campanha...");
+        input.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+        delay(1500); // Adiciona atraso
+
+        return new Aventureiro(habilidade, energia, sorte, 0, 10);
+    }
+
+    // função para verificar os atributos do personagem
+    public static void verificarPersonagem(Aventureiro personagem){
+        System.out.printf("\nSeu personagem esta com %d de habilidade, %d de energia e %d de sorte. \n", personagem.getHabilidade(), personagem.getEnergia(), personagem.getSorte());
+        // System.out.printf("Habilidade: %d\n", personagem.getHabilidade());
+        // System.out.printf("Energia: %d\n", personagem.getEnergia());
+        // System.out.printf("Sorte: %d\n", personagem.getSorte());
+        System.out.printf("Ouro: %d\n", personagem.getOuro());
+        System.out.printf("Provisões Restantes: %d\n", personagem.getProvisoesRestantes());
+        System.out.printf("Equipamentos: %s\n", personagem.getEquipamentos());
+        System.out.printf("Poções: %s\n", personagem.getPocoes());
+
+        System.out.printf("habilidade inicial: %d\n", personagem.getHabilidadeInicial());
+        System.out.printf("energia inicial: %d\n", personagem.getEnergiaInicial());
+    }
+
+    // Função para rolar um dado de 6 lados (D6)
+    public static int rolarDadoD6(){
+        Random random = new Random();
+        return random.nextInt(6) + 1;
+    }
     // Função para limpar o console e reposicionar o cursor
     public static void clearConsole() {
         System.out.print("\033[H\033[2J");

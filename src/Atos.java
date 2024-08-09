@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import personagem.Aventureiro;
+
 public class Atos {
     /* creditos */
     public static void creditos(Scanner input) {
@@ -59,7 +61,7 @@ public class Atos {
                         "choradas por olhos que não voltariam a vê-lo vivo.\n\n");
     }
     /* Página 1 */
-    public static void pag1 (Scanner input){
+    public static void pag1 (Aventureiro personagem, Scanner input){
         System.out.printf("Finalmente a sua caminhada de dois dias chegou ao fim. Você desembainha a sua espada, coloca-a\r\n" + //
                         "no chão e suspira aliviado, enquanto se abaixa para se sentar nas pedras cheias de musgo para um\r\n" + //
                         "momento de descanso. Você se espreguiça, esfrega os olhos e, afinal, olha para a Montanha do\r\n" + //
@@ -68,7 +70,7 @@ public class Atos {
         System.out.print("Pressione Enter para continuar...");
         input.nextLine(); // Avança para a próxima linha
 
-        System.out.printf("A própria montanha em si já tem um ar ameaçador. Algum animal gigantesco parece ter deixado as\r\n" + //
+        System.out.printf("\nA própria montanha em si já tem um ar ameaçador. Algum animal gigantesco parece ter deixado as\r\n" + //
                         "marcas de suas garras na encosta íngreme diante de você. Penhascos rochosos e pontudos se\r\n" + //
                         "projetam, formando ângulos estranhos. No cume você já pode vislumbrar a sinistra coloração\r\n" + //
                         "vermelha - provavelmente alguma vegetação misteriosa - que deu nome à montanha. Talvez\r\n" + //
@@ -78,23 +80,23 @@ public class Atos {
         System.out.print("Pressione Enter para continuar...");
         input.nextLine(); // Avança para a próxima linha
         
-        System.out.printf("Sua busca está para começar. Do outro lado da clareira há uma escura entrada de caverna. Vocêr\r\n" + //
+        System.out.printf("\nSua busca está para começar. Do outro lado da clareira há uma escura entrada de caverna. Vocêr\r\n" + //
                         "pega a sua espada, levanta-se e considera que perigos podem estar à sua frente, Mas, comr\r\n" + //
-                        "determinação, você recoloca a sua espada na bainha e se aproxima da caverna.");
+                        "determinação, você recoloca a sua espada na bainha e se aproxima da caverna.\n\n");
         Metodos.delay(1500); // Adiciona atraso 
         System.out.print("Pressione Enter para continuar...");
         input.nextLine(); // Avança para a próxima linha
 
-        System.out.printf("Você dá uma primeira olhada na penumbra e vê-paredes escuras e úmidas com poças de água no\r\n" + //
+        System.out.printf("\nVocê dá uma primeira olhada na penumbra e vê-paredes escuras e úmidas com poças de água no\r\n" + //
                         "chão de pedra à sua frente. O ar é frio e úmido. Você acende a sua lanterna e avança cautelosamente\r\n" + //
                         "pela escuridão. Teias de aranha tocam seu rosto e você ouve a movimentação de pés minúsculos: \r\n" + //
                         "muito provavelmente, ratazanas. Você adentra a caverna. Depois de uns poucos metros, chega logo \r\n" + //
-                        "a uma encruzilhada.");
+                        "a uma encruzilhada.\n\n");
         Metodos.delay(1500); // Adiciona atraso 
         System.out.print("Pressione Enter para continuar...");
         input.nextLine(); // Avança para a próxima linha
         
-        System.out.printf("\n\nVocê vai virar para o oeste ou para o leste? \n1. ir para o oeste\n2. ir para o leste "); // oeste (vá para 71) leste (vá para 278)
+        System.out.printf("\nVocê vai virar para o oeste ou para o leste? \n1. ir para o oeste\n2. ir para o leste\n3. verificar o personagem"); // oeste (vá para 71) leste (vá para 278)
         System.out.printf("\n>"); // Indica onde o usuario irá digitar
         int escolha = input.nextInt();
         input.nextLine(); // Avança para a próxima linha
