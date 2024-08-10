@@ -96,17 +96,228 @@ public class Atos {
         System.out.print("Pressione Enter para continuar...");
         input.nextLine(); // Avança para a próxima linha
         
-        System.out.printf("\nVocê vai virar para o oeste ou para o leste? \n1. ir para o oeste\n2. ir para o leste\n3. verificar o personagem"); // oeste (vá para 71) leste (vá para 278)
+        System.out.printf("\nVocê vai virar para o oeste ou para o leste? \n1. ir para o oeste\n2. ir para o leste"); // oeste (vá para 71) leste (vá para 278)
         System.out.printf("\n>"); // Indica onde o usuario irá digitar
         int escolha = input.nextInt();
         input.nextLine(); // Avança para a próxima linha
         
         switch (escolha) {
             case 1:
-                // chamar função para ir para oeste
+                pag71(personagem, input); // oeste (vá para 71)
                 break;
             case 2:
-                // chamar função para ir para leste
+                pag278(personagem, input); // leste (vá para 278)
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+    /* Pagina 33 */
+    public static void pag33(Aventureiro personagem, Scanner input){
+        System.out.printf("O ser que dormia desperta sobressaltado. Ele fica em pé e avança sobre você desarmado. Com sua \r\n" + //
+                        "espada, você deve ser capaz de derrotá-lo, mas seus dentes afiados parecem bem perigosos.\n\n");
+        System.out.printf("Você pode Fugir pela porta ou ficar e lutar contra o Orca que está atacando você.\n (Se você derrotar o ser, pode levar a caixa.)\n\n"); // fugir (vá para 320) lutar Se você derrotar o ser, pode levar a caixa. Vá para 147.
+        System.out.printf("1. Fugir\n2. Lutar\n\n");
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+        
+        switch (escolha) {
+            case 1:
+                // fugir (vá para 320).
+                break;
+            case 2:
+                // lutar (Vá para 147)
+
+                /*
+                 * BATALHA
+                 * 
+                 * ORCA HABILIDADE 6 ENERGIA 4
+                 * 
+                */
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+
+    /* Página 71 */
+    public static void pag71(Aventureiro personagem, Scanner input){
+        Metodos.clearConsole(); // Limpa o console
+        System.out.printf("Há uma curva na passagem para a direita, levando para o norte. Cautelosamente, você se aproxima \r\n" + //
+                        "de um posto de sentinela em um canto e, ao olhar para dentro, vê um ser estranho, parecido com um \r\n" + //
+                        "Goblin, vestido de armadura de couro e adormecido em seu posto.\n\n");
+        Metodos.delay(1500); // Adiciona atraso 
+        System.out.print("Pressione Enter para continuar...");
+        input.nextLine(); // Avança para a próxima linha
+        System.out.printf("\nVocê tenta passar por ele na ponta dos pés. Teste a sua Sorte.\n\n"); // teste sua sorte: Se você tiver sorte (vá para 301) Se você não tiver sorte (vá para 248)
+
+        System.out.print("Pressione Enter para executar o teste de sorte...");
+        input.nextLine(); // Avança para a próxima linha
+        Metodos.delay(1500); // Adiciona atraso 
+
+        // Teste de sorte
+        int resultado = Metodos.testeDeSorte(personagem);
+
+        if (resultado <= personagem.getSorte()){
+            System.out.printf("\nEle não acorda e continua a roncar alto\n\n");
+            personagem.setSorte(personagem.getSorte() - 1);
+            System.out.printf("Você perdeu 1 ponto de sorte!\nSorte atual: %d\nSorte inicial: %d\n\n", personagem.getSorte(), personagem.getSorteInicial());
+            System.out.print("Pressione Enter para continuar...");
+            input.nextLine(); // Avança para a próxima linha
+            pag301(personagem, input);
+        }else{
+            System.out.printf("\nvocê pisa em terreno mole e faz um barulho, e os olhos do ser se abrem instantaneamente\n\n");
+            personagem.setSorte(personagem.getSorte() - 1);
+            System.out.printf("Você perdeu 1 ponto de sorte!\nSorte atual: %d\nSorte inicial: %d\n\n", personagem.getSorte(), personagem.getSorteInicial());
+            System.out.print("Pressione Enter para continuar...");
+            input.nextLine(); // Avança para a próxima linha
+            pag248(personagem, input);
+        }
+
+    }
+    /* Página 82 */
+    public static void pag82 (Aventureiro personagem, Scanner input){
+        System.out.printf("A porta se abre para revelar um aposento pequeno e de cheiro forte. No centro do aposento há uma \r\n" + //
+                        "mesa de madeira instável onde está uma vela acesa. Embaixo da mesa há uma pequena caixa de \r\n" + //
+                        "madeira. Dormindo em um colchão de palha, no canto mais distante do aposento, está um ser baixo \r\n" + //
+                        "e robusto, com um rosto feio e cheio de verrugas: o mesmo tipo de ser que você encontrou \r\n" + //
+                        "dormindo no posto de sentinela. Deve ser o guarda do turno da noite. ");
+
+        System.out.printf("Você pode retornar para o corredor e seguir em frente para o norte ou insinuar-se pelo aposento para tentar pegar \r\n" + //
+                        "a caixa sem acordar o ser.\n\n1. Retornar para o corredor e seguir em frente para o norte\n2. Tentar pegar a caixa. Teste de Sorte.");
+        
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+                        
+        switch (escolha) {
+            case 1:
+                // retornar para o corredor (vá para 208)
+                break;
+            case 2:
+                // Teste de sorte
+                int resultado = Metodos.testeDeSorte(personagem);
+
+                if(resultado <= personagem.getSorte()){
+                    System.out.printf("\nEle não acorda e continua a roncar alto\n\n");
+                    personagem.setSorte(personagem.getSorte() - 1);
+                    System.out.printf("Você perdeu 1 ponto de sorte!\nSorte atual: %d\nSorte inicial: %d\n\n", personagem.getSorte(), personagem.getSorteInicial());
+                    System.out.print("Pressione Enter para continuar...");
+                    input.nextLine(); // Avança para a próxima linha
+                    // vá para 147
+                }else{
+                    System.out.printf("\nEle acordou\n\n");
+                    personagem.setSorte(personagem.getSorte() - 1);
+                    System.out.printf("Você perdeu 1 ponto de sorte!\nSorte atual: %d\nSorte inicial: %d\n\n", personagem.getSorte(), personagem.getSorteInicial());
+                    System.out.print("Pressione Enter para continuar...");
+                    input.nextLine(); // Avança para a próxima linha
+                    // volte para 33
+                }
+
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+    /* Página 147 */
+    public static void pag147(Aventureiro personagem, Scanner input) {
+        System.out.printf(
+                "Você sai do aposento e abre a caixa na passagem. Lá dentro, você encontra uma única Peça de Ouro \r\n" + //
+                "e um pequeno camundongo, que deve ter sido o animal de estimação do ser. Você guarda a moeda e \r\n" + //
+                "solta o camundongo, que sai correndo pela passagem afora.\n\n");
+        personagem.setOuro(personagem.getOuro() + 1);
+
+        // Aumenta a SORTE, mas não pode exceder o valor inicial
+        int sorteNova = personagem.getSorte() + 2;
+        if (sorteNova > personagem.getSorteInicial()) {
+            sorteNova = personagem.getSorteInicial();
+        }
+        personagem.setSorte(sorteNova);
+
+        System.out.printf("Você ganhou 2 pontos de SORTE! Você tem agora %d pontos de SORTE.\n\n", personagem.getSorte());
+        System.out.print("Pressione Enter para continuar...");
+        input.nextLine(); // Avança para a próxima linha
+        pag208(personagem, input);
+    }
+    /* Página 208 */
+    public static void pag208(Aventureiro personagem, Scanner input){
+        System.out.printf("Mais adiante na passagem, seguindo a parede oeste, você vê outra porta. Você escuta com o ouvido \r\n" + //
+                        "colado nela, mas não ouve nada.");
+        System.out.printf("Você quer abrir a porta?\n1. Abrir a porta\n2. Continuar na direção norte");
+
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+                        
+        switch (escolha) {
+            case 1:
+                // Se quiser tentar abrir esta porta, vá para 397.
+                break;
+            case 2:
+                // Se quiser continuar na direção norte, vá para 363.
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+
+    /* Página 248 */
+    public static void pag248(Aventureiro personagem, Scanner input){
+        System.out.printf("O ser que acabou de acordar é um ORCA! Ele se levanta rápido e se vira para puxar uma corda que \r\n" + //
+                        "provavelmente é a sineta do alarme. Você tem que atacá-lo imediatamente.\n\n");
+        /*
+         * BATALHA
+         * 
+         * ORCA HABILIDADE 6 ENERGIA 5 
+         * Se você vencer, pode continuar seguindo a passagem vá para 301. 
+         * 
+        */
+
+    }
+
+    /* Página 278 */
+    public static void pag278(Aventureiro personagem, Scanner input){
+        System.out.printf("A passagem logo termina em uma porta de madeira trancada. Você cola o ouvido na porta. Mas não ouve nada.");
+
+        System.out.printf("Você vai tentar derrubá-la?\n1. Derrubar a porta\n2. retornar à encruzilhada"); // Derrubar a porta (vá para 156) retornar à encruzilhada (vá para 92)
+
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+        
+        switch (escolha) {
+            case 1:
+                //  Em caso afirmativo, volte para 156.
+                break;
+            case 2:
+                // Se você preferir dar meia volta e retornar à encruzilhada, volte para 92.
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+
+    /* Página 301 */
+    public static void pag301(Aventureiro personagem, Scanner input){
+        System.out.printf("À sua esquerda, na parte oeste da passagem, há uma porta de madeira rústica. Você pára junto a ela \r\n" + //
+                        "e ouve um som áspero que poderia ser de algum tipo de criatura roncando.");
+        System.out.printf("Você quer abrir a porta? \n1. Abrir a porta\n2. Continuar na direção norte"); 
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+        
+        switch (escolha) {
+            case 1:
+                // Em caso afirmativo, volte para 82.
+                break;
+            case 2:
+                // Se quiser seguir adiante para o norte, volte para 208.
                 break;
             default:
                 System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
