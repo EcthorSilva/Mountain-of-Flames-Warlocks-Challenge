@@ -127,6 +127,13 @@ public class Metodos {
         System.out.printf("energia inicial: %d\n", personagem.getEnergiaInicial());
     }
 
+    /* Metpdps de mecanica */
+    public static int testeDeSorte(Aventureiro personagem){
+        return rolarDadoD6() + rolarDadoD6();
+    }
+
+    /* Metodos auxiliares */
+
     // Função para rolar um dado de 6 lados (D6)
     public static int rolarDadoD6(){
         Random random = new Random();
