@@ -113,7 +113,7 @@ public class Atos {
                 break;
         }
     }
-    /* Pagina 33 */
+    /* Página 33 */
     public static void pag33(Aventureiro personagem, Scanner input){
         System.out.printf("O ser que dormia desperta sobressaltado. Ele fica em pé e avança sobre você desarmado. Com sua \r\n" + //
                         "espada, você deve ser capaz de derrotá-lo, mas seus dentes afiados parecem bem perigosos.\n\n");
@@ -125,8 +125,11 @@ public class Atos {
         
         switch (escolha) {
             case 1:
-                // fugir (vá para 320).
-
+                personagem.setEnergia(personagem.getEnergia() - 1);  // Diminui a energia do personagem
+                System.out.printf("Você decide fugir, mas no momento da fuga é atingido\nSua Energia atual é %d \n\n", personagem.getEnergia());
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag320(personagem, input);
                 break;
             case 2:
                 // lutar (Vá para 147)
@@ -153,10 +156,16 @@ public class Atos {
                         
         switch (escolha) {
             case 1:
-                // oeste (vá para 257)
+                System.out.printf("Você decide ir para oeste...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag257(personagem, input);
                 break;
             case 2:
-                // leste (vá para 113)
+            System.out.printf("Você decide ir para leste...\n\n");
+            System.out.print("Pressione Enter para continuar...");
+            input.nextLine(); // Avança para a próxima linha
+            pag113(personagem, input);
                 break;
             default:
                 System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
@@ -256,6 +265,33 @@ public class Atos {
         pag71(personagem, input);
     }
 
+    /* Página 113 */
+    public static void pag113(Aventureiro personagem, Scanner input){
+        System.out.printf("Você chega a uma outra encruzilhada na passagem.");
+        System.out.printf("Você pode seguir para o norte ou continuar para o leste.\n1. seguir para o norte\n2. continuar para o leste");
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+        
+        switch (escolha) {
+            case 1:
+                System.out.printf("Você decide ir para o norte...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                // pagina 285
+                break;
+            case 2:
+                System.out.printf("Você decide ir para leste...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                // pagina 78
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+
     /* Página 147 */
     public static void pag147(Aventureiro personagem, Scanner input) {
         System.out.printf(
@@ -276,6 +312,30 @@ public class Atos {
         input.nextLine(); // Avança para a próxima linha
         pag208(personagem, input);
     }
+    /* Página 156 */
+    public static void pag156(Aventureiro personagem, Scanner input){
+        System.out.printf("Você bate contra aporta como ombro.\n");
+        System.out.printf("Teste de Habilidade\n\n");
+
+        System.out.print("Pressione Enter para executar o teste de habilidade...");
+        input.nextLine(); // Avança para a próxima linha
+        Metodos.delay(1500); // Adiciona atraso
+
+        // Teste de habilidade
+        int resultado = Metodos.rolarDadoD6() + Metodos.rolarDadoD6();
+        if(resultado <= personagem.getHabilidade()){
+            System.out.printf("A porta se abre...\n\n");
+            System.out.print("Pressione Enter para continuar...");
+            input.nextLine(); // Avança para a próxima linha
+            // pagina 343
+        }else{
+            System.out.printf("você esfrega o ombro machucado e resolve não tentar de novo e decide retornar à encruzilhada.\n\n");
+            System.out.print("Pressione Enter para continuar...");
+            input.nextLine(); // Avança para a próxima linha
+            pag92(personagem, input);
+        }
+    }
+
     /* Página 208 */
     public static void pag208(Aventureiro personagem, Scanner input){
         System.out.printf("Mais adiante na passagem, seguindo a parede oeste, você vê outra porta. Você escuta com o ouvido \r\n" + //
@@ -319,6 +379,33 @@ public class Atos {
 
     }
 
+    /* Pagina 257 */
+    public static void pag257(Aventureiro personagem, Scanner input){
+        System.out.printf("A passagem prossegue em linha reta por vários metros e então termina em uma porta de madeira. \r\n" + //
+                        "Você escuta através da porta e ouve gritos furiosos vindos do lado de dentro.");
+        System.out.printf("Você investiga ou retorna?\n1. investigar\n2. retornar");
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+        switch (escolha) {
+            case 1:
+                System.out.printf("Você decide investigar...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                // pagina 168
+                break;
+            case 2:
+                System.out.printf("Você decide retornar...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                // pagina 293
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+
     /* Página 278 */
     public static void pag278(Aventureiro personagem, Scanner input){
         System.out.printf("A passagem logo termina em uma porta de madeira trancada. Você cola o ouvido na porta. Mas não ouve nada.");
@@ -331,7 +418,10 @@ public class Atos {
         
         switch (escolha) {
             case 1:
-                //  Em caso afirmativo, volte para 156.
+                System.out.printf("Você decide derrubar a porta...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag156(personagem, input);
                 break;
             case 2:
                 System.out.printf("Você decide retornar à encruzilhada...\n\n");
@@ -343,6 +433,14 @@ public class Atos {
                 System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
                 break;
         }
+    }
+
+    /* Página 293 */
+    public static void pag293(Aventureiro personagem, Scanner input){
+        System.out.printf("Você retorna à encruzilhada na passagem e segue sempre em frente na direção leste.\n\n");
+        System.out.print("Pressione Enter para continuar...");
+        input.nextLine(); // Avança para a próxima linha
+        pag113(personagem, input);
     }
 
     /* Página 301 */
@@ -374,6 +472,15 @@ public class Atos {
                 break;
         }
     }
+    /* Página 320 */
+    public static void pag320(Aventureiro personagem, Scanner input){
+        System.out.printf("Você sai correndo do aposento e fecha a porta com violência ao passar. Você vira na direção norte \r\n" + //
+                        "subindo a passagem, onde vê uma porta de aparência semelhante.\n\n");
+        System.out.print("Pressione Enter para continuar...");
+        input.nextLine(); // Avança para a próxima linha
+        pag363(personagem, input);
+    }
+
     /* Página 363 */
     public static void pag363(Aventureiro personagem, Scanner input){
         System.out.printf("Seguindo pela passagem na parede oeste, você vê outra porta semelhante. Você escuta junto à porta \r\n" + //
