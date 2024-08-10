@@ -126,6 +126,7 @@ public class Atos {
         switch (escolha) {
             case 1:
                 // fugir (vá para 320).
+
                 break;
             case 2:
                 // lutar (Vá para 147)
@@ -136,6 +137,26 @@ public class Atos {
                  * ORCA HABILIDADE 6 ENERGIA 4
                  * 
                 */
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+    /* Página 42 */
+    public static void pag42(Aventureiro personagem, Scanner input){
+        System.out.printf("Afinal você chega ao final da trilha, em um encontro de três caminhos. Você pode ir para o oeste ou para o leste.\n");
+        System.out.printf("1. ir para oeste\n2. ir para leste");
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+                        
+        switch (escolha) {
+            case 1:
+                // oeste (vá para 257)
+                break;
+            case 2:
+                // leste (vá para 113)
                 break;
             default:
                 System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
@@ -195,7 +216,10 @@ public class Atos {
                         
         switch (escolha) {
             case 1:
-                // retornar para o corredor (vá para 208)
+                System.out.printf("Você retorna para o corredor e segue em frente para o norte.\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag208(personagem, input);
                 break;
             case 2:
                 // Teste de sorte
@@ -207,14 +231,14 @@ public class Atos {
                     System.out.printf("Você perdeu 1 ponto de sorte!\nSorte atual: %d\nSorte inicial: %d\n\n", personagem.getSorte(), personagem.getSorteInicial());
                     System.out.print("Pressione Enter para continuar...");
                     input.nextLine(); // Avança para a próxima linha
-                    // vá para 147
+                    pag147(personagem, input);
                 }else{
                     System.out.printf("\nEle acordou\n\n");
                     personagem.setSorte(personagem.getSorte() - 1);
                     System.out.printf("Você perdeu 1 ponto de sorte!\nSorte atual: %d\nSorte inicial: %d\n\n", personagem.getSorte(), personagem.getSorteInicial());
                     System.out.print("Pressione Enter para continuar...");
                     input.nextLine(); // Avança para a próxima linha
-                    // volte para 33
+                    pag33(personagem, input);
                 }
 
                 break;
@@ -223,6 +247,15 @@ public class Atos {
                 break;
         }
     }
+    /* Página 92 */
+    public static void pag92(Aventureiro personagem, Scanner input){
+        System.out.printf("Você chega de volta à encruzilhada na passagem. Você olha à esquerda e vê a entrada da caverna à \r\n" + //
+                        "distância, na penumbra, mas segue em frente caminhando.\n\n");
+        System.out.print("Pressione Enter para continuar...");
+        input.nextLine(); // Avança para a próxima linha
+        pag71(personagem, input);
+    }
+
     /* Página 147 */
     public static void pag147(Aventureiro personagem, Scanner input) {
         System.out.printf(
@@ -255,10 +288,16 @@ public class Atos {
                         
         switch (escolha) {
             case 1:
-                // Se quiser tentar abrir esta porta, vá para 397.
+                System.out.printf("Você tenta abrir a porta...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag397(personagem, input);
                 break;
             case 2:
-                // Se quiser continuar na direção norte, vá para 363.
+                System.out.printf("Você continua na direção norte...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag363(personagem, input);
                 break;
             default:
                 System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
@@ -295,7 +334,10 @@ public class Atos {
                 //  Em caso afirmativo, volte para 156.
                 break;
             case 2:
-                // Se você preferir dar meia volta e retornar à encruzilhada, volte para 92.
+                System.out.printf("Você decide retornar à encruzilhada...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag92(personagem, input);
                 break;
             default:
                 System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
@@ -315,13 +357,71 @@ public class Atos {
         switch (escolha) {
             case 1:
                 // Em caso afirmativo, volte para 82.
+                System.out.printf("Você tenta abrir a porta...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag82(personagem, input);
                 break;
             case 2:
                 // Se quiser seguir adiante para o norte, volte para 208.
+                System.out.printf("Você continua na direção norte...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag208(personagem, input);
                 break;
             default:
                 System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
                 break;
         }
+    }
+    /* Página 363 */
+    public static void pag363(Aventureiro personagem, Scanner input){
+        System.out.printf("Seguindo pela passagem na parede oeste, você vê outra porta semelhante. Você escuta junto à porta \r\n" + //
+                        "e faz uma careta ao ouvir a voz mais desafinada que seus ouvidos já conheceram!\n\n");
+        System.out.print(" Você quer entrar no aposento para investigar o horroroso som ou seguir adiante pela passagem?\n1. Investigar\n2. Seguir adiante"); // investigar o horroroso som (vá para 370) sair (volte para 363).
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+        switch (escolha) {
+            case 1:
+                // investigar o horroroso som (vá para 370)
+                break;
+            case 2:
+                System.out.printf("Você decide seguir adiante pela passagem...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag42(personagem, input);
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+    }
+
+    /* Página 397 */
+    public static void pag397(Aventureiro personagem, Scanner input){
+        System.out.printf("A porta abre e revela um pequeno aposento de chão de pedra e paredes sujas. Há um cheiro de mofo \r\n" + //
+                        "no ar. No centro do aposento, há uma mesa improvisada de madeira, em cima da qual está uma vela \r\n" + //
+                        "acesa. Sob a mesa, há uma pequena caixa. No canto mais distante do aposento, há um colchão de \r\n" + //
+                        "palha.\n\n");
+        System.out.printf(" Você pode abrir a caixa ou sair do aposento.\n1.Abrir a caixa\n2. Sair do aponsento"); // abrir a caixa (volte para 240) ou sair (volte para 363).
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+        switch (escolha) {
+            case 1:
+                // abrir a caixa (volte para 240).
+                break;
+            case 2:
+                System.out.printf("Você decide sair do aposento...\n\n");
+                System.out.print("Pressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                pag363(personagem, input);
+                break;
+            default:
+                System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
+                break;
+        }
+
     }
 }
